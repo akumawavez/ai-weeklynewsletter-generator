@@ -3,7 +3,7 @@ name: Weekly LLMOps Newsletter
 on:
   schedule:
     # 12:41 Netherlands time during summer, CEST UTC+2
-    - cron: "45 10 * * THU"
+    - cron: "48 10 * * THU"
   workflow_dispatch:
 
 permissions:
@@ -26,7 +26,7 @@ jobs:
         run: python -m pip install uv
 
       - name: Install dependencies
-        run: uv sync
+        run: uv sync --no-install-project
 
       - name: Ingest Hugging Face dataset
         run: uv run python ingest_dataset.py
