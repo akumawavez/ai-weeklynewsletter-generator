@@ -1,0 +1,13 @@
+test.md
+data/
+
+.env
+**/.env
+
+.DS_Store
+./vscode/
+
+__pycache__/
+
+
+
