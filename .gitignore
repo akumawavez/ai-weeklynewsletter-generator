@@ -3,6 +3,9 @@ data/
 
 newsletterenv/
 
+newsletter_outputs/
+AIassistanceLog.md
+
 .env
 **/.env
 
@@ -10,9 +13,6 @@ newsletterenv/
 ./vscode/
 
 __pycache__/
-
-AIassistanceLog.md
-newsletter_outputs/
 
 
 
