@@ -11,5 +11,8 @@ newsletterenv/
 
 __pycache__/
 
+AIassistanceLog.md
+newsletter_outputs/
+
 
 
