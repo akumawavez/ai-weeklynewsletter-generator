@@ -1,19 +1,19 @@
 from datasets import load_dataset
 import pandas as pd
 import sqlite3
+import json
 from pathlib import Path
 
 
 DATASET_NAME = "zenml/llmops-database"
-OUTPUT_DIR = Path("data/llmops_database")
-SQLITE_DB_PATH = OUTPUT_DIR / "llmops_database.db"
+OUTPUT_DIR = Path("data")
+
+DB_PATH = OUTPUT_DIR / "llmops_database.db"
+PARQUET_PATH = OUTPUT_DIR / "llmops_database.parquet"
+JSONL_PATH = OUTPUT_DIR / "llmops_documents.jsonl"
 
 
 def normalize_tag_field(value):
-    """
-    Hugging Face datasets can store tag-like fields as lists or strings.
-    This function converts them into a clean comma-separated string.
-    """
     if value is None:
         return ""
 
@@ -23,26 +23,43 @@ def normalize_tag_field(value):
     return str(value).strip()
 
 
-def ingest_dataset():
+def build_rag_text(row):
+    """
+    This text is what your LLM/RAG system will retrieve.
+    Keep it rich enough for semantic search.
+    """
+
+    parts = [
+        f"Title: {row.get('title', '')}",
+        f"Company: {row.get('company', '')}",
+        f"Industry: {row.get('industry', '')}",
+        f"Year: {row.get('year', '')}",
+        f"Application Tags: {row.get('application_tags', '')}",
+        f"Tools Tags: {row.get('tools_tags', '')}",
+        f"Techniques Tags: {row.get('techniques_tags', '')}",
+        f"Extra Tags: {row.get('extra_tags', '')}",
+        "",
+        f"Short Summary: {row.get('short_summary', '')}",
+        "",
+        f"Full Summary: {row.get('full_summary', '')}",
+    ]
+
+    return "\n".join(str(p) for p in parts if p is not None).strip()
+
+
+def ingest():
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
-    print(f"Loading dataset: {DATASET_NAME}")
+    print(f"Loading Hugging Face dataset: {DATASET_NAME}")
 
     dataset = load_dataset(DATASET_NAME)
 
-    print("Available splits:", dataset.keys())
-
-    # The dataset page says it has a single collection.
-    # Usually Hugging Face exposes this as "train".
     split_name = list(dataset.keys())[0]
-    records = dataset[split_name]
+    df = dataset[split_name].to_pandas()
 
-    df = records.to_pandas()
+    print(f"Loaded records: {len(df)}")
+    print(f"Columns found: {list(df.columns)}")
 
-    print(f"Loaded {len(df)} records")
-    print("Columns:", list(df.columns))
-
-    # Expected fields from the dataset card
     expected_columns = [
         "created_at",
         "title",
@@ -58,19 +75,15 @@ def ingest_dataset():
         "full_summary",
     ]
 
-    # Keep only columns that exist, in case the dataset schema changes later
     available_columns = [col for col in expected_columns if col in df.columns]
     df = df[available_columns].copy()
 
-    # Normalize dates
     if "created_at" in df.columns:
         df["created_at"] = pd.to_datetime(df["created_at"], errors="coerce")
 
-    # Normalize year
     if "year" in df.columns:
         df["year"] = pd.to_numeric(df["year"], errors="coerce").astype("Int64")
 
-    # Normalize tag fields
     tag_columns = [
         "application_tags",
         "tools_tags",
@@ -82,62 +95,44 @@ def ingest_dataset():
         if col in df.columns:
             df[col] = df[col].apply(normalize_tag_field)
 
-    # Remove records without title
     if "title" in df.columns:
-        df = df[df["title"].notna()]
+        df = df[df["title"].notna()].copy()
         df["title"] = df["title"].astype(str).str.strip()
 
-    # Add a derived text field useful for newsletter/RAG workflows
-    text_parts = []
+    df["rag_text"] = df.apply(build_rag_text, axis=1)
 
-    for col in [
-        "title",
-        "company",
-        "industry",
-        "short_summary",
-        "full_summary",
-        "application_tags",
-        "tools_tags",
-        "techniques_tags",
-    ]:
-        if col in df.columns:
-            text_parts.append(df[col].fillna("").astype(str))
+    # Save queryable version
+    df.to_parquet(PARQUET_PATH, index=False)
 
-    if text_parts:
-        df["newsletter_context"] = text_parts[0]
-        for part in text_parts[1:]:
-            df["newsletter_context"] += "\n" + part
-
-        df["newsletter_context"] = df["newsletter_context"].str.strip()
-
-    # Save as CSV
-    csv_path = OUTPUT_DIR / "llmops_database.csv"
-    df.to_csv(csv_path, index=False)
-
-    # Save as JSONL
-    jsonl_path = OUTPUT_DIR / "llmops_database.jsonl"
-    df.to_json(jsonl_path, orient="records", lines=True, force_ascii=False)
-
-    # Save as Parquet
-    parquet_path = OUTPUT_DIR / "llmops_database.parquet"
-    df.to_parquet(parquet_path, index=False)
-
-    # Save to SQLite
-    with sqlite3.connect(SQLITE_DB_PATH) as conn:
+    with sqlite3.connect(DB_PATH) as conn:
         df.to_sql("llmops_case_studies", conn,
                   if_exists="replace", index=False)
 
-    print("\nIngestion complete.")
-    print(f"CSV saved to:     {csv_path}")
-    print(f"JSONL saved to:   {jsonl_path}")
-    print(f"Parquet saved to: {parquet_path}")
-    print(f"SQLite saved to:  {SQLITE_DB_PATH}")
+    # Save RAG-friendly JSONL
+    with open(JSONL_PATH, "w", encoding="utf-8") as f:
+        for idx, row in df.iterrows():
+            doc = {
+                "id": f"llmops-{idx}",
+                "text": row["rag_text"],
+                "metadata": {
+                    "title": row.get("title", ""),
+                    "company": row.get("company", ""),
+                    "industry": row.get("industry", ""),
+                    "year": str(row.get("year", "")),
+                    "source_url": row.get("source_url", ""),
+                    "tools_tags": row.get("tools_tags", ""),
+                    "techniques_tags": row.get("techniques_tags", ""),
+                    "application_tags": row.get("application_tags", ""),
+                },
+            }
 
-    return df
+            f.write(json.dumps(doc, ensure_ascii=False) + "\n")
+
+    print("\nIngestion complete.")
+    print(f"SQLite DB: {DB_PATH}")
+    print(f"Parquet:   {PARQUET_PATH}")
+    print(f"JSONL:     {JSONL_PATH}")
 
 
 if __name__ == "__main__":
-    df = ingest_dataset()
-
-    print("\nSample records:")
-    print(df[["title", "company", "industry"]].head(5))
+    ingest()

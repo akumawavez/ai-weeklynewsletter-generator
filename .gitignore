@@ -1,6 +1,8 @@
 test.md
 data/
 
+newsletterenv/
+
 .env
 **/.env
 
