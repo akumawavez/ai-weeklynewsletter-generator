@@ -3,7 +3,7 @@ name: Weekly LLMOps Newsletter
 on:
   schedule:
     # 12:31 Netherlands time (CEST, UTC+2)
-    - cron: "34 10 * * THU"
+    - cron: "38 10 * * THU"
     #- cron: "0 8 * * MON"
   workflow_dispatch:
 
