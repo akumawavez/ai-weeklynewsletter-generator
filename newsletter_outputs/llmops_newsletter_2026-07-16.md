@@ -1,0 +1,365 @@
+# Weekly LLMOps Newsletter — 2026-07-16
+
+A curated roundup of relevant LLMOps case studies, production patterns, tools, and use cases.
+
+## This Week’s Angle
+
+This edition highlights practical LLMOps patterns across production deployment, RAG, agents, automation, evaluation, and infrastructure.
+
+## Research Highlights
+
+### 1. Forward-Deployed AI Engineering in UK Government Justice System
+
+**Company:** uk_ministry_of_justice
+
+**Industry:** Government
+
+**Relevance score:** 127
+
+**uk_ministry_of_justice / Government** — The UK Ministry of Justice established the Justice AI Unit to address critical inefficiencies in the prison, probation, and court systems that were causing operational failures including erroneous prisoner releases. The unit adopted a forward-deployed engineering model where a lean team of approximately 40 engineers... — Tools: monitoring,databases,api_gateway,microservices,cicd,devops,documentation,security,compliance,guardrails,cache | Techniques: prompt_engineering,agent_based,human_in_the_loop,latency_optimization
+
+**Source:** https://www.youtube.com/watch?v=qlHaO6laBlM
+
+---
+
+## Industry News
+
+### 1. Multi-Agent Orchestration for Enterprise Sales with Amazon Bedrock AgentCore
+
+**Company:** aws
+
+**Industry:** Tech
+
+**Relevance score:** 132
+
+**aws / Tech** — AWS Sales faced an agent proliferation challenge with over 20 domain-specific AI agents deployed globally, forcing sales representatives to manually navigate between systems and manage context across fragmented conversations. To address this, AWS built Field Advisor on Amazon Bedrock AgentCore, creating a unified conversational interface... — Tools: microservices,orchestration,monitoring,guardrails,langchain,fastapi,cache | Techniques: multi_agent_systems,agent_based,prompt_engineering,memory,human_in_the_loop,rag,semantic_search,embeddings,token_optimization,error_handling,latency_optimization
+
+**Source:** https://aws.amazon.com/blogs/machine-learning/powering-agentic-ai-sales-strategy-with-amazon-bedrock-agentcore/
+
+---
+
+### 2. Conversational AI Shopping Assistant with Multi-Agent Architecture and Real-Time Grounding
+
+**Company:** doordash
+
+**Industry:** E-commerce
+
+**Relevance score:** 132
+
+**doordash / E-commerce** — DoorDash built a conversational AI shopping assistant called "Ask DoorDash" to help consumers discover restaurants and shop for groceries through natural language interactions. The system addresses the challenge of maintaining accurate grounding against rapidly changing local commerce data (menus, prices, inventory, ETAs) while providing personalized... — Tools: kubernetes,docker,monitoring,databases,api_gateway,microservices,cicd,scaling,serverless,devops,orchestration,continuous_deployment,continuous_integration,open_source,documentation,guardrails,reliability,scalability,cache,langchain | Techniques: rag,embeddings,prompt_engineering,semantic_search,vector_search,multi_agent_systems,agent_based,memory,latency_optimization,cost_optimization,evals,a2a,mcp
+
+**Source:** https://careersatdoordash.com/blog/building-doordash-assistant-an-engineering-overview/
+
+---
+
+### 3. Healthcare Agentic AI Transformation: From Pilot to Production Scale
+
+**Company:** davita_/_elevance_health_/_hca_healthcare_/_independence_blue_cross
+
+**Industry:** Healthcare
+
+**Relevance score:** 127
+
+**davita_/_elevance_health_/_hca_healthcare_/_independence_blue_cross / Healthcare** — This panel discussion at Google Cloud Next features leaders from HCA Healthcare, Independence Blue Cross, Davita, and Elevance Health discussing their journeys from pilot projects to production-scale deployment of AI agents across healthcare operations. The organizations address common challenges including pilot purgatory, fragmented use cases... — Tools: monitoring,databases,orchestration,documentation,security,compliance,guardrails,reliability,scalability | Techniques: multi_agent_systems,agent_based,rag,prompt_engineering,semantic_search,human_in_the_loop,cost_optimization,latency_optimization
+
+**Source:** https://youtu.be/lm5mHq95Hbg
+
+---
+
+### 4. Multi-Agent Skills Matching Platform for Construction Workforce
+
+**Company:** burns_&_mcdonnel
+
+**Industry:** Consulting
+
+**Relevance score:** 127
+
+**burns_&_mcdonnel / Consulting** — Burns & McDonnell, a global architectural engineering and construction company, deployed a multi-agent system called "Experience IQ" to solve the challenge of matching employees with complex skill requirements across diverse projects and locations. Built using Google Cloud's Agent Development Kit (ADK) and deployed through Gemini... — Tools: kubernetes,docker,monitoring,databases,orchestration,open_source,documentation,security,compliance,guardrails,langchain,postgresql | Techniques: multi_agent_systems,agent_based,prompt_engineering,embeddings,semantic_search,memory,evals,few_shot,error_handling,fallback_strategies,human_in_the_loop
+
+**Source:** https://youtu.be/Req2PndZ7HM
+
+---
+
+### 5. Production-Grade AI Agents for Financial Compliance Review Automation
+
+**Company:** stripe
+
+**Industry:** Finance
+
+**Relevance score:** 127
+
+**stripe / Finance** — Stripe, processing $1.4 trillion annually across 50 countries, faced a critical compliance scaling challenge where skilled analysts spent up to 80% of their time navigating fragmented systems rather than performing risk assessments. To address this, Stripe built a production-grade AI agent system on AWS using... — Tools: microservices,orchestration,monitoring,api_gateway,databases,cache | Techniques: agent_based,prompt_engineering,rag,token_optimization,human_in_the_loop,harness_engineering,few_shot
+
+**Source:** https://aws.amazon.com/blogs/machine-learning/production-grade-ai-agents-for-financial-compliance-lessons-from-stripe/
+
+---
+
+### 6. Rethinking Insurance with AI: Operational Deployment Strategies for Brokers, Carriers, and Advisors
+
+**Company:** deloitte
+
+**Industry:** Insurance
+
+**Relevance score:** 127
+
+**deloitte / Insurance** — This panel discussion features insurance technology leaders from Baldwin Group, Ameriprise Financial (RiverSource), and Hudson Insurance discussing how they are deploying AI and LLM-based solutions into production workflows. The discussion covers the challenges of moving from AI experimentation to production adoption, including the need to... — Tools: api_gateway,guardrails,documentation,security,compliance | Techniques: prompt_engineering,embeddings,agent_based,human_in_the_loop,semantic_search
+
+**Source:** https://www.youtube.com/watch?v=8THW-2PpwnY
+
+---
+
+### 7. AI-Powered Conversational Business Intelligence Assistant for Enterprise Leadership
+
+**Company:** aws
+
+**Industry:** Tech
+
+**Relevance score:** 127
+
+**aws / Tech** — AWS SMGS faced significant business intelligence challenges including time-intensive manual data preparation, fragmented data across multiple systems, and limited dashboard accessibility that delayed critical leadership decisions. To address these issues, they built NarrateAI, an AI-powered conversational assistant using Amazon Bedrock AgentCore that delivers on-demand business... — Tools: serverless,guardrails,monitoring,orchestration,databases,langchain | Techniques: rag,prompt_engineering,multi_agent_systems,agent_based,memory,evals
+
+**Source:** https://aws.amazon.com/blogs/machine-learning/how-aws-smgs-uses-an-ai-powered-conversational-assistant-to-transform-business-management-with-amazon-bedrock-agentcore/
+
+---
+
+### 8. Purpose-Built AI Agent Hierarchies for GPU Infrastructure Reliability
+
+**Company:** nvidia
+
+**Industry:** Tech
+
+**Relevance score:** 127
+
+**nvidia / Tech** — NVIDIA's Applied AI Lab for DGX Cloud developed LLo11yPop, a hierarchical agent system for managing large-scale GPU infrastructure. The problem involved monitoring and optimizing hundreds of GPU clusters with complex failure modes, resource allocation constraints, and the need for proactive incident detection. The solution employed... — Tools: kubernetes,monitoring,guardrails,langchain,databases,elasticsearch,postgresql,open_source,documentation,reliability,scalability | Techniques: multi_agent_systems,agent_based,prompt_engineering,rag,evals,mcp,few_shot,error_handling,human_in_the_loop,latency_optimization,cost_optimization,system_prompts
+
+**Source:** https://www.infoq.com/presentations/reliable-ai-platforms
+
+---
+
+### 9. Infrastructure Challenges in Production AI: Multi-Company Panel on Scaling, Cost, and Governance
+
+**Company:** forge_/_cockroach_labs_/_doubleword_/_mesa
+
+**Industry:** Tech
+
+**Relevance score:** 127
+
+**forge_/_cockroach_labs_/_doubleword_/_mesa / Tech** — This panel discussion from InfoQ Live brings together infrastructure experts from Forge, Cockroach Labs, Doubleword, and MESA to address the operational challenges of running AI systems at scale. The problem identified is that while building AI models has become relatively straightforward, maintaining production databases and... — Tools: kubernetes,databases,monitoring,scaling,devops,orchestration,postgresql,mysql,sqlite,redis,cache,elasticsearch,open_source,security,guardrails,reliability,scalability,documentation | Techniques: agent_based,multi_agent_systems,embeddings,vector_search,prompt_engineering,cost_optimization,latency_optimization,error_handling,fallback_strategies,evals
+
+**Source:** https://www.infoq.com/presentations/ai-infrastructure-scaling-architecture/
+
+---
+
+### 10. Building Production-Grade Customer Experience Agents at Enterprise Scale
+
+**Company:** sierra
+
+**Industry:** Tech
+
+**Relevance score:** 127
+
+**sierra / Tech** — Sierra has built a comprehensive platform for deploying customer experience agents across sales, service, and loyalty touchpoints for Fortune 20 companies. The platform addresses the challenge of building reliable, low-latency conversational AI at enterprise scale by developing a modular architecture that orchestrates 10-15 different models... — Tools: monitoring,api_gateway,microservices,cicd,devops,orchestration,continuous_deployment,continuous_integration,open_source,documentation,security,compliance,guardrails,reliability,scalability,fastapi,postgresql,cache,langchain | Techniques: prompt_engineering,few_shot,model_optimization,error_handling,agent_based,harness_engineering,memory,latency_optimization,cost_optimization,fallback_strategies,system_prompts,mcp,a2a,evals,rag,fine_tuning,reranking
+
+**Source:** https://www.youtube.com/watch?v=uCKhOmth2ms
+
+---
+
+### 11. Agentic AI for Title Operations Workflow Optimization
+
+**Company:** rocket
+
+**Industry:** Finance
+
+**Relevance score:** 127
+
+**rocket / Finance** — Rocket Close, a Detroit-based title agency within Rocket Companies, faced bottlenecks in title operations due to time-intensive state-specific examinations, manual research across fragmented systems, and complex local requirements that slowed mortgage processing. To address these challenges, they built Supercharger in collaboration with AWS—an agentic AI... — Tools: kubernetes,microservices,guardrails,compliance,monitoring,api_gateway,documentation,security | Techniques: rag,prompt_engineering,agent_based,multi_agent_systems,semantic_search,mcp,a2a
+
+**Source:** https://aws.amazon.com/blogs/machine-learning/building-supercharger-how-rocket-close-optimized-title-operations-with-agentic-ai/
+
+---
+
+### 12. Building a Production Data Agent for 90,000 Tables at Scale
+
+**Company:** openai
+
+**Industry:** Tech
+
+**Relevance score:** 127
+
+**openai / Tech** — OpenAI's data platform team built an internal data agent to help ~4,000 users navigate 1.5 exabytes of data across 90,000 datasets. The core challenge was not writing SQL queries but finding the right tables and understanding how to use them semantically, with analysts spending hours... — Tools: langchain,postgresql,redis,cache,pinecone,chromadb,qdrant,fastapi,spacy,monitoring,orchestration,databases,open_source,documentation | Techniques: embeddings,rag,semantic_search,vector_search,prompt_engineering,agent_based,memory,harness_engineering,chunking
+
+**Source:** https://blog.bytebytego.com/p/how-openai-built-its-data-agent
+
+---
+
+### 13. Building Production AI Customer Support Agents with Multi-Agent Architecture and Human-in-the-Loop Design
+
+**Company:** lorikeet
+
+**Industry:** Tech
+
+**Relevance score:** 127
+
+**lorikeet / Tech** — Lorikeet is an AI customer support startup that evolved from building basic automation tools to creating sophisticated multi-agent systems for handling customer support at scale. The company developed two primary agents: a customer-facing concierge agent that handles support tickets across email, live chat, and voice... — Tools: langchain,monitoring,databases,api_gateway,guardrails,open_source | Techniques: multi_agent_systems,prompt_engineering,human_in_the_loop,agent_based,evals,system_prompts,error_handling,harness_engineering
+
+**Source:** https://www.youtube.com/watch?v=eZj1xSiyd9U
+
+---
+
+### 14. Building an AI-Powered Slack Agent with MCP Standardization
+
+**Company:** duolingo
+
+**Industry:** Education
+
+**Relevance score:** 127
+
+**duolingo / Education** — Duolingo developed an AI-powered Slack bot to democratize access to their Model Context Protocol (MCP) infrastructure after discovering that manual MCP server setup was too complex for widespread adoption. The journey began with individual engineers connecting MCP servers to local editors in late 2024, evolved... — Tools: fastapi,docker,monitoring,security,guardrails,open_source,documentation,cicd,orchestration,postgresql | Techniques: mcp,prompt_engineering,human_in_the_loop,multi_agent_systems,agent_based,evals,system_prompts
+
+**Source:** https://www.youtube.com/watch?v=5sb9iA2v78g
+
+---
+
+### 15. AI-Powered Consumer Feedback Analysis at Scale for Product Safety and Quality
+
+**Company:** mattel
+
+**Industry:** Other
+
+**Relevance score:** 122
+
+**mattel / Other** — Mattel, a global toy manufacturer with $5.5 billion in annual revenue and operations across 100+ manufacturing sites, faced a critical scaling challenge in analyzing consumer feedback for product safety and quality decisions. Their teams were manually reviewing millions of consumer signals including reviews, service transcripts... — Tools: monitoring,databases,orchestration,guardrails,fastapi | Techniques: multi_agent_systems,prompt_engineering,semantic_search,human_in_the_loop,evals
+
+**Source:** https://www.youtube.com/watch?v=2swzoVYU_iQ&list=PLFZU5nT4APFA&index=147
+
+---
+
+### 16. Scaling LLM Inference with Multi-Accelerator Strategy for Recommendations and Safety
+
+**Company:** spotify
+
+**Industry:** Media & Entertainment
+
+**Relevance score:** 122
+
+**spotify / Media & Entertainment** — Spotify faced exponentially growing compute demands from deploying LLMs across recommendation systems and content safety at global scale, serving 700 million users. The company implemented a multi-accelerator strategy using both GPUs and TPUs through a shared resource pool, leveraging open-source inference engines (vLLM and SGLang)... — Tools: kubernetes,vllm,pytorch,tensorflow,fastapi,monitoring,scaling,orchestration,open_source | Techniques: fine_tuning,cost_optimization,latency_optimization,model_optimization,multi_agent_systems,embeddings
+
+**Source:** https://youtu.be/WbMlr83CYDA
+
+---
+
+### 17. Multimodal AI at Scale: Voice, Video, and Visual Generation for E-commerce and Enterprise Communication
+
+**Company:** heygen_/_elevenlabs_/_photogen
+
+**Industry:** Tech
+
+**Relevance score:** 122
+
+**heygen_/_elevenlabs_/_photogen / Tech** — This panel discussion features three AI companies operating multimodal production systems at massive scale: PhotoRoom (20 million users processing 10 billion e-commerce images annually), ElevenLabs (voice AI serving major enterprises and creative studios), and HeyGen (40 million users generating 100+ million minutes of video). Each... — Tools: vllm,fastapi,monitoring | Techniques: prompt_engineering,model_optimization,latency_optimization,cost_optimization,few_shot,evals,multi_agent_systems,fine_tuning
+
+**Source:** https://www.youtube.com/watch?v=WgMx66iImXI&list=PLFZU5nT4APFA&index=56
+
+---
+
+### 18. CPU-Based Infrastructure for AI Inference and Agentic Workflows
+
+**Company:** resemble_ai_/_turpopuffer
+
+**Industry:** Tech
+
+**Relevance score:** 122
+
+**resemble_ai_/_turpopuffer / Tech** — This case study explores how Turpopuffer and Resemble AI architect their AI infrastructure to optimize for inference and agentic workflows on Google Cloud Platform. Turpopuffer built a search engine enabling models to attend to trillions of tokens by caching data from object storage to NVMe... — Tools: kubernetes,vllm,onnx,databases,cache,scaling,open_source,security | Techniques: embeddings,vector_search,model_optimization,knowledge_distillation,latency_optimization,cost_optimization,agent_based
+
+**Source:** https://www.youtube.com/watch?v=x3LntcL1ffs&list=PLFZU5nT4APFA&index=47
+
+---
+
+## Cool Use Cases
+
+### 1. Building Production-Scale Voice and Multi-Modal Customer Experience Agents
+
+**Company:** sierra
+
+**Industry:** Tech
+
+**Relevance score:** 142
+
+**sierra / Tech** — Sierra has built an enterprise agent platform serving most of the Fortune 20 companies, focusing on customer experience across sales, service, and loyalty touchpoints. The platform addresses the challenge of building reliable, low-latency conversational agents that can handle complex customer interactions across voice and chat... — Tools: monitoring,api_gateway,microservices,cicd,orchestration,continuous_deployment,continuous_integration,open_source,documentation,security,compliance,guardrails,reliability,scalability,fastapi,postgresql,cache,langchain | Techniques: prompt_engineering,few_shot,semantic_search,vector_search,model_optimization,token_optimization,error_handling,multi_agent_systems,agent_based,harness_engineering,memory,latency_optimization,cost_optimization,fallback_strategies,system_prompts,mcp,a2a,evals,fine_tuning,reranking,rag,embeddings,reinforcement_learning
+
+**Source:** https://www.youtube.com/watch?v=uCKhOmth2ms
+
+---
+
+### 2. Agent Memory System for Personalized Food Ordering and Discovery
+
+**Company:** doordash
+
+**Industry:** E-commerce
+
+**Relevance score:** 127
+
+**doordash / E-commerce** — DoorDash built an agent memory system to power their Ask DoorDash conversational ordering experience, addressing the challenge of enabling AI agents to maintain persistent, structured understanding of user preferences across sessions. The solution connects their long-term memory platform with live agents through a three-layer architecture... — Tools: llama_index,langchain,pinecone,chromadb,qdrant,postgresql,redis,cache,fastapi,monitoring | Techniques: embeddings,vector_search,semantic_search,rag,prompt_engineering,memory,agent_based,multi_agent_systems,chunking
+
+**Source:** https://careersatdoordash.com/blog/building-ask-doordash-part-two-intelligence/
+
+---
+
+### 3. AI-Powered Customer Feedback Analysis System for Container Shipping
+
+**Company:** hapag-lloyd
+
+**Industry:** Other
+
+**Relevance score:** 127
+
+**hapag-lloyd / Other** — Hapag-Lloyd, a global container shipping company, transformed their manual and time-consuming customer feedback analysis process into an automated AI-powered system using Amazon Bedrock. Previously, product managers spent hours or days manually categorizing sentiment and themes from hundreds of feedback comments exported as CSV files. The... — Tools: langchain,elasticsearch,monitoring,serverless,orchestration,open_source,guardrails | Techniques: embeddings,rag,prompt_engineering,multi_agent_systems,agent_based,semantic_search
+
+**Source:** https://aws.amazon.com/blogs/machine-learning/how-hapag-lloyd-uses-amazon-bedrock-to-transform-customer-feedback-into-actionable-insights/
+
+---
+
+### 4. Building Custom Agents at Scale: Notion's Multi-Year Journey to Production-Ready Agentic Workflows
+
+**Company:** notion
+
+**Industry:** Tech
+
+**Relevance score:** 127
+
+**notion / Tech** — Notion, a knowledge work platform serving enterprise customers, spent multiple years (2022-2026) iterating through four to five complete rebuilds of their agent infrastructure before shipping Custom Agents to production. The core problem was enabling users to automate complex workflows across their workspaces while maintaining enterprise-grade... — Tools: langchain,postgresql,sqlite,elasticsearch,fastapi,docker,kubernetes,cicd,monitoring,databases,api_gateway,microservices,orchestration,open_source,documentation,security,guardrails,reliability,scalability,cache | Techniques: agent_based,multi_agent_systems,prompt_engineering,few_shot,rag,embeddings,fine_tuning,evals,reranking,semantic_search,vector_search,human_in_the_loop,cost_optimization,latency_optimization,system_prompts,mcp,chunking,error_handling,a2a
+
+**Source:** https://www.latent.space/p/notion
+
+---
+
+## Tools & Infrastructure
+
+### 1. Production AI Framework for Retail Banking Chatbot
+
+**Company:** databricks
+
+**Industry:** Finance
+
+**Relevance score:** 132
+
+**databricks / Finance** — A retail banking institution was struggling with a chatbot that failed to scale from demo to production, receiving 20,000 customer calls per month with 60% being simple queries that could be automated. The organization had spent $85K over 6 months on a failed POC that... — Tools: crewai,langchain,monitoring,databases,api_gateway,orchestration,guardrails,documentation,open_source | Techniques: rag,embeddings,prompt_engineering,multi_agent_systems,agent_based,human_in_the_loop,error_handling,fallback_strategies,evals,semantic_search,vector_search
+
+**Source:** https://www.youtube.com/watch?v=ObTPqBGsEbA
+
+---
+
+### 2. Production-Ready AI Agents for Automated User Story Generation in Financial Services
+
+**Company:** ford
+
+**Industry:** Automotive
+
+**Relevance score:** 127
+
+**ford / Automotive** — Ford Credit, the financial services arm of Ford Motor Company, deployed production-ready AI agents to automate the conversion of product requirements in Confluence into technical user stories. The problem addressed was the "blank page problem" where product managers had to manually translate high-level requirements into... — Tools: kubernetes,docker,monitoring,cicd,scaling,serverless,devops,orchestration,guardrails,security,compliance,reliability,scalability,fastapi,databases,api_gateway,microservices | Techniques: agent_based,multi_agent_systems,prompt_engineering,human_in_the_loop,memory,rag,embeddings,semantic_search,vector_search,cost_optimization,latency_optimization,error_handling,mcp,a2a,evals
+
+**Source:** https://www.youtube.com/watch?v=Mq4ZY3eE5dI&list=PLFZU5nT4APFA&index=15
+
+---
